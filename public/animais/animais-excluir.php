@@ -3,7 +3,7 @@
 include "../../infra/conexao.php";
 $id = $_GET["id"];
 
-$stmt prepare (
+$stmt = mysqli_prepare (
     $conexao, 
 
     "DELETE FROM animais WHERE id = ? "
