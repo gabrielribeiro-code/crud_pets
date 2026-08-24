@@ -101,8 +101,8 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
                     <th>Especies</th>
                     <th>Raça</th>
                     <th>Idade</th>
-                    <th> Dono do Pet <th> 
-
+                    <th>Dono do Pet<th>
+                    <th>Ações</th> 
                 </tr>
 
                 <?php while ($linha = mysqli_fetch_assoc($animais)) { ?>
@@ -112,7 +112,9 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
                         <td><?php echo $linha["especies"] ?></td>
                         <td><?php echo $linha["raca"] ?></td>
                         <td><?php echo $linha["idade"] ?></td>
-                        <td><?php echo $linha["id_cliente"] ?></td>
+
+                        <td><?php echo $linha["nome_cliente"]  ?? $linha ["id_cliente"]?? 'Não informado'; ?></td>
+
                         <td>
                             <a href="public/animais/animais-editar.php? id=<?php echo $linha["id"] ?>">Editar</a>
                             <a href="public/animais/animais-excluir.php? id=<?php echo $linha["id"] ?>">Excluir</a>
