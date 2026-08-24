@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS animaissDB;
+CREATE DATABASE IF NOT EXISTS petssDB;
 
-use animaissDB;
+use petssDB;
 
 CREATE TABLE clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,6 +15,7 @@ CREATE TABLE animais (
      especies VARCHAR(100) NOT NULL,
      raca VARCHAR(100) NOT NULL,
      idade int NOT NULL,
+     donoAnimal VARCHAR(100) NOT NULL,
      id_clientes int NOT NULL,
 
     constraint fk_clientes foreign key (id_clientes) references clientes(id)
@@ -24,8 +25,8 @@ CREATE TABLE animais (
 insert into clientes (nome, email, senha)
 values ('admin', 'admin232@gmail.com', '1234');
 
-insert into animais (nomePet, especies, raca, idade, id_clientes)
-values ('thor', 'cachorro', 'labrador', '3', 1);
+insert into animais (nomePet, especies, raca, idade, donoAnimal, id_clientes)
+values ('thor', 'cachorro', 'labrador', '3', 'id_cliente', 1);
 
 
 

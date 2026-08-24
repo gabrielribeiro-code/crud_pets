@@ -101,6 +101,7 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
                     <th>Especies</th>
                     <th>Raça</th>
                     <th>Idade</th>
+                    <th> Dono do Pet <th> 
 
                 </tr>
 
@@ -111,6 +112,7 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
                         <td><?php echo $linha["especies"] ?></td>
                         <td><?php echo $linha["raca"] ?></td>
                         <td><?php echo $linha["idade"] ?></td>
+                        <td><?php echo $linha["id_cliente"] ?></td>
                         <td>
                             <a href="public/animais/animais-editar.php? id=<?php echo $linha["id"] ?>">Editar</a>
                             <a href="public/animais/animais-excluir.php? id=<?php echo $linha["id"] ?>">Excluir</a>
