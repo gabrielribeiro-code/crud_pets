@@ -5,7 +5,7 @@ include "infra/conexao.php";
 
 $tabelaClientes = mysqli_query($conexao, "SELECT * FROM clientes");
 $dropClientes = mysqli_query($conexao, "SELECT * FROM clientes");
-$tabelaAnimais = mysqli_query($conexao, "SELECT * FROM animais");
+$animais = mysqli_query($conexao, "SELECT * FROM animais");
 
 ?>
 
@@ -20,27 +20,23 @@ $tabelaAnimais = mysqli_query($conexao, "SELECT * FROM animais");
 
 <main>
 
-<div> 
-
-<h2>Adicione um novo Cliente</h2>
-<form action="public/clientes/clientes-cadastrar.php" method="POST">
-    <label for="nome"> Nome: </label>
-    <input type="text" name="nome">
-    <br>
-    <label for="email"> Email: </label>
-    <input type="text" name="email">
-    <br>
-    <label for="senha"> Senha: </label>
-    <input type="password" name="senha">
-    <br>
-    <button type= "submit"> Cadastrar </button>
-
-</form>
-
-</div>
+    <div> 
+        <h2>Adicione um novo Cliente</h2>
+        <form action="public/clientes/clientes-cadastrar.php" method="POST">
+            <label for="nome"> Nome: </label>
+            <input type="text" name="nome">
+            <br>
+            <label for="email"> Email: </label>
+            <input type="text" name="email">
+            <br>
+            <label for="senha"> Senha: </label>
+            <input type="password" name="senha">
+            <br>
+            <button type= "submit"> Cadastrar </button>
+        </form>
+    </div>
 
 <div>
-
 <h2>Clientes Cadastrados</h2>
 <table>
 <tr>
@@ -50,15 +46,20 @@ $tabelaAnimais = mysqli_query($conexao, "SELECT * FROM animais");
     <th>Senha</th>
 </tr>
 
-<?php while ($clientes = mysqli_fetch_assoc($tabelaClientes)) {
-                    echo "<tr>";
-                    echo "<td>" . $clientes['id'] . "</td>";
-                    echo "<td>" . $clientes['nome'] . "</td>";
-                    echo "<td>" . $clientes['email'] . "</td>";
-                    echo "<td>" . $clientes['senha'] . "</td>";
-                    echo "</tr>";
-                }
-?>
+<?php while ($linha = mysqli_fetch_assoc($tabelaClientes)) { ?>
+                    <tr>
+                        <td><?php echo $linha["id"] ?></td>
+                        <td><?php echo $linha["nome"] ?></td>
+                        <td><?php echo $linha["email"] ?></td>
+                        <td><?php echo $linha["senha"] ?></td>
+                        <td>
+                            <a href="public/clientes/clientes-editar.php? id=<?php echo $linha["id"] ?>">Editar</a>
+                            <a href="public/clientes/clientes-excluir.php? id=<?php echo $linha["id"] ?>">Excluir</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+
+
 
 </table>
 </div>
@@ -117,7 +118,7 @@ $tabelaAnimais = mysqli_query($conexao, "SELECT * FROM animais");
                     </tr>
                 <?php } ?>
 
-                
+     
 
             </table>
         </div>
