@@ -63,6 +63,64 @@ $tabelaAnimais = mysqli_query($conexao, "SELECT * FROM animais");
 </table>
 </div>
 
+<div>
+<h2>Adicione um novo Animal</h2>
+<form action="public/animais/animais-cadastrar.php" method="POST">
+    <label for="nomePet"> Nome Pet: </label>
+    <input type="text" name="nomePet">
+    <br>
+    <label for="especies"> Especies: </label>
+    <input type="text" name="especies">
+    <br>
+    <label for="raca"> Raça: </label>
+    <input type="text" name="raca">
+    <br>
+    <label for="idade"> Idade: </label>
+    <input type="number" name="idade">
+    <br>
+
+ <label for="id_cliente">O dono do pet é: </label>
+                <select name="id_cliente">
+                    <option value="0">Selecione</option>
+                    <?php while ($clientes = mysqli_fetch_assoc($dropClientes)) { ?>
+                        <option value="<?php echo $clientes['id']; ?>"><?php echo $clientes['nome']; ?></option>
+                    <?php } ?>
+                </select>
+                <br>
+                <button type="submit">Cadastrar</button>
+            </form>
+
+</div>
+<div>
+            <h2>Animais Cadastrados</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome Pet: </th>
+                    <th>Especies</th>
+                    <th>Raça</th>
+                    <th>Idade</th>
+
+                </tr>
+
+                <?php while ($linha = mysqli_fetch_assoc($animais)) { ?>
+                    <tr>
+                        <td><?php echo $linha["id"] ?></td>
+                        <td><?php echo $linha["nomePet"] ?></td>
+                        <td><?php echo $linha["especies"] ?></td>
+                        <td><?php echo $linha["raca"] ?></td>
+                        <td><?php echo $linha["idade"] ?></td>
+                        <td>
+                            <a href="public/animais/animais-editar.php? id=<?php echo $linha["id"] ?>">Editar</a>
+                            <a href="public/animais/animais-excluir.php? id=<?php echo $linha["id"] ?>">Excluir</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+
+                
+
+            </table>
+        </div>
 
 
 
