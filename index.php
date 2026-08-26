@@ -53,8 +53,8 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
                         <td><?php echo $linha["email"] ?></td>
                         <td><?php echo $linha["senha"] ?></td>
                         <td>
-                            <a href="public/clientes/clientes-editar.php? id=<?php echo $linha["id"] ?>">Editar</a>
-                            <a href="public/clientes/clientes-excluir.php? id=<?php echo $linha["id"] ?>">Excluir</a>
+                            <a href="public/clientes/clientes-editar.php?editar=<?php echo $linha["id"]; ?>">Editar</a>
+                            <a href="public/clientes/clientes-excluir.php?excluir=<?php echo $linha["id"]; ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -105,19 +105,19 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
                     <th>Ações</th> 
                 </tr>
 
-                <?php while ($linha = mysqli_fetch_assoc($animais)) { ?>
+                <?php while ($animal = mysqli_fetch_assoc($animais)) { ?>
                     <tr>
-                        <td><?php echo $linha["id"] ?></td>
-                        <td><?php echo $linha["nomePet"] ?></td>
-                        <td><?php echo $linha["especies"] ?></td>
-                        <td><?php echo $linha["raca"] ?></td>
-                        <td><?php echo $linha["idade"] ?></td>
+                        <td><?php echo $animal["id"] ?></td>
+                        <td><?php echo $animal["nomePet"] ?></td>
+                        <td><?php echo $animal["especies"] ?></td>
+                        <td><?php echo $animal["raca"] ?></td>
+                        <td><?php echo $animal["idade"] ?></td>
 
-                        <td><?php echo $linha["nome_cliente"]  ?? $linha ["id_cliente"]?? 'Não informado'; ?></td>
+                        <td><?php echo $animal["nome_cliente"]  ?? $animal ["id_cliente"]?? 'Não informado'; ?></td>
 
                         <td>
-                            <a href="public/animais/animais-editar.php? id=<?php echo $linha["id"] ?>">Editar</a>
-                            <a href="public/animais/animais-excluir.php? id=<?php echo $linha["id"] ?>">Excluir</a>
+                            <a href="public/animais/animais-editar.php?editar=<?php echo $animal["id"]; ?>">Editar</a>
+                            <a href="public/animais/animais-excluir.php?excluir=<?php echo $animal["id"]; ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
