@@ -16,11 +16,11 @@ E também na parte do select fizemos algo diferente do que nas outras atividades
                     <?php while ($clientes = mysqli_fetch_assoc($dropClientes)) { ?>
                         <option value="<?php echo $clientes['id']; ?>">
                             <?php echo $clientes['nome']; ?></option>
-                    <?php } ?>
+                    <?php } ?>.
 
 
 
-# Conclusão
+# Conclusãoo
 
 No restante das páginas foi mais o menos o mesmo que nas atividades anteriores sem grandes mudanças só na pagina php,
 para excluir os clientes que fizemos uma coisa diferente, fizemos um if para nao deixar excluir clientes que ainda tem,
