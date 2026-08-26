@@ -5,7 +5,12 @@ include "infra/conexao.php";
 
 $tabelaClientes = mysqli_query($conexao, "SELECT * FROM clientes");
 $dropClientes = mysqli_query($conexao, "SELECT * FROM clientes");
-$animais = mysqli_query($conexao, "SELECT * FROM animais");
+$animais = mysqli_query($conexao, "
+    SELECT animais.*, clientes.nome AS nome_cliente
+    FROM animais
+    INNER JOIN clientes ON animais.id_clientes = clientes.id
+");
+//No inner join nos juntamos as informações das duas tabelas assim aparecendo o id do cliente e seu nome
 
 ?>
 
@@ -80,11 +85,12 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
     <input type="number" name="idade">
     <br>
 
- <label for="id_cliente">O dono do pet é: </label>
-                <select name="id_cliente">
-                    <option value="0">Selecione</option>
+ <label for="id_clientes">O dono do pet é: </label>
+                <select name="id_clientes">
+                    <option value="" selected disabled>Selecione</option>
                     <?php while ($clientes = mysqli_fetch_assoc($dropClientes)) { ?>
-                        <option value="<?php echo $clientes['id']; ?>"><?php echo $clientes['nome']; ?></option>
+                        <option value="<?php echo $clientes['id']; ?>">
+                            <?php echo $clientes['nome']; ?></option>
                     <?php } ?>
                 </select>
                 <br>
@@ -101,7 +107,7 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
                     <th>Especies</th>
                     <th>Raça</th>
                     <th>Idade</th>
-                    <th>Dono do Pet<th>
+                    <th>Dono do Pet</th>
                     <th>Ações</th> 
                 </tr>
 
@@ -113,7 +119,7 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
                         <td><?php echo $animal["raca"] ?></td>
                         <td><?php echo $animal["idade"] ?></td>
 
-                        <td><?php echo $animal["nome_cliente"]  ?? $animal ["id_cliente"]?? 'Não informado'; ?></td>
+                        <td><?php echo $animal["nome_cliente"]; ?></td>
 
                         <td>
                             <a href="public/animais/animais-editar.php?editar=<?php echo $animal["id"]; ?>">Editar</a>
