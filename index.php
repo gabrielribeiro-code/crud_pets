@@ -59,7 +59,7 @@ $animais = mysqli_query($conexao, "
                         <td><?php echo $cliente["senha"] ?></td>
                         <td>
                             <a href="public/clientes/clientes-editar.php?editar=<?php echo $cliente["id"]; ?>">Editar</a>
-                            <a href="public/clientes/clientes-excluir.php?excluir=<?php echo $cliente["id"]; ?>">Excluir</a>
+                            <a href="public/clientes/clientes-excluir.php?id=<?php echo $cliente["id"]; ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -123,7 +123,7 @@ $animais = mysqli_query($conexao, "
 
                         <td>
                             <a href="public/animais/animais-editar.php?editar=<?php echo $animal["id"]; ?>">Editar</a>
-                            <a href="public/animais/animais-excluir.php?excluir=<?php echo $animal["id"]; ?>">Excluir</a>
+                            <a href="public/animais/animais-excluir.php?id=<?php echo $animal["id"]; ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
