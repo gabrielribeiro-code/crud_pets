@@ -10,17 +10,9 @@ mesmo assim levou algumas horas para ser feita a atividade.
 No index php diferente das outras atividades só tivemos que fazer um inner join para juntar as informações das duas tabelas assim aparecendo o id do cliente e seu nome.
 E também na parte do select fizemos algo diferente do que nas outras atividades para aparecer quem é o dono de cada animal, essa foi a lógica utilizada:
 
- label for="id_clientes">O dono do pet é: </label>
-                <select name="id_clientes">
-                    <option value="" selected disabled>Selecione</option>
-                    <?php while ($clientes = mysqli_fetch_assoc($dropClientes)) { ?>
-                        <option value="<?php echo $clientes['id']; ?>">
-                            <?php echo $clientes['nome']; ?></option>
-                    <?php } ?>.
 
 
-
-# Conclusãoo
+# Conclusão
 
 No restante das páginas foi mais o menos o mesmo que nas atividades anteriores sem grandes mudanças só na pagina php,
 para excluir os clientes que fizemos uma coisa diferente, fizemos um if para nao deixar excluir clientes que ainda tem,
