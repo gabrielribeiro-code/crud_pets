@@ -9,6 +9,7 @@ mesmo assim levou algumas horas para ser feita a atividade.
 
 No index php diferente das outras atividades só tivemos que fazer um inner join para juntar as informações das duas tabelas assim aparecendo o id do cliente e seu nome.
 E também na parte do select fizemos algo diferente do que nas outras atividades para aparecer quem é o dono de cada animal, essa foi a lógica utilizada:
+Demos um nome pro select e chamamos ele de id_clientes e fiz toda a lógica do php while que o professor já explicou. Não to conseguindo mostrar o código. Mas está foi a lógica utilizada.
 
 
 
