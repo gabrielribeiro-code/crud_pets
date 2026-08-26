@@ -46,15 +46,15 @@ $animais = mysqli_query($conexao, "SELECT * FROM animais");
     <th>Senha</th>
 </tr>
 
-<?php while ($linha = mysqli_fetch_assoc($tabelaClientes)) { ?>
+<?php while ($cliente = mysqli_fetch_assoc($tabelaClientes)) { ?>
                     <tr>
-                        <td><?php echo $linha["id"] ?></td>
-                        <td><?php echo $linha["nome"] ?></td>
-                        <td><?php echo $linha["email"] ?></td>
-                        <td><?php echo $linha["senha"] ?></td>
+                        <td><?php echo $cliente["id"] ?></td>
+                        <td><?php echo $cliente["nome"] ?></td>
+                        <td><?php echo $cliente["email"] ?></td>
+                        <td><?php echo $cliente["senha"] ?></td>
                         <td>
-                            <a href="public/clientes/clientes-editar.php?editar=<?php echo $linha["id"]; ?>">Editar</a>
-                            <a href="public/clientes/clientes-excluir.php?excluir=<?php echo $linha["id"]; ?>">Excluir</a>
+                            <a href="public/clientes/clientes-editar.php?editar=<?php echo $cliente["id"]; ?>">Editar</a>
+                            <a href="public/clientes/clientes-excluir.php?excluir=<?php echo $cliente["id"]; ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>

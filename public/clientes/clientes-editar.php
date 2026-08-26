@@ -5,23 +5,22 @@ include "../../infra/conexao.php";
 if (isset($_POST['atualizar'])) {
 
     $id = $_POST['id'];
-    $nomePet = $_POST['nomePet'];
-    $especies = $_POST['especies'];
-    $raca = $_POST['raca'];
-    $idade = $_POST['idade'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+   
 
-    $sql = "UPDATE animais
-            SET nomePet = ?, especies = ?, raca = ?, idade = ?
+    $sql = "UPDATE clientes
+            SET nome = ?, email = ?, senha = ?
             WHERE id = ?";
 
     $stmt = $conexao->prepare($sql);
 
     $stmt->bind_param(
-        "sssii",
-        $nomePet,
-        $especies,
-        $raca,
-        $idade,
+        "ssii",
+        $nome,
+        $email,
+        $senha,
         $id
     );
 
@@ -35,14 +34,14 @@ if (isset($_GET['editar'])) {
 
     $id = $_GET['editar'];
 
-    $sql = "SELECT * FROM animais WHERE id = ?";
+    $sql = "SELECT * FROM clientes WHERE id = ?";
 
     $stmt = $conexao->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
     $resultado = $stmt->get_result();
-    $animal = $resultado->fetch_assoc();
+    $cliente = $resultado->fetch_assoc();
 }
 
 ?>
@@ -51,31 +50,28 @@ if (isset($_GET['editar'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDITAR ANIMAL</title>
+    <title>EDITAR CLIENTE</title>
 </head>
 <body>
 
  <header>
-    <h1>EDITAR ANIMAL</h1>
+    <h1>EDITAR CLIENTE</h1>
  </header>
 
  <main> 
-    <h2>Editando o animal <?php echo $animal["nomePet"]?>!</h2>
+    <h2>Editando o cliente <?php echo $cliente["nome"]?>!</h2>
         <form  method="POST">
 
-            <input type="hidden" name="id" value="<?php echo $animal["id"]?>">
+            <input type="hidden" name="id" value="<?php echo $cliente["id"]?>">
 
-            <label for="nomePet">Nome:</label>
-            <input type="text" name="nomePet" value="<?php echo $animal["nomePet"]?>">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" value="<?php echo $cliente["nome"]?>">
             <br>
-            <label for="especies">Especies:</label>
-            <input type="text" name="especies" value="<?php echo $animal["especies"]?>">
+            <label for="email">email:</label>
+            <input type="text" name="email" value="<?php echo $cliente["email"]?>">
             <br>
-            <label for="raca">Raca:</label>
-            <input type="text" name="raca" value="<?php echo $animal["raca"]?>">
-            <br>
-            <label for="idade">Idade:</label>
-            <input type="number" name="idade" value="<?php echo $animal["idade"]?>">
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" value="<?php echo $cliente["senha"]?>">
             <br>
         
             <button type="submit" name="atualizar">Atualizar</button>
